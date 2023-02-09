@@ -226,6 +226,67 @@ public class ArrayListAlgorithms
      *  @param intList  intList of Integers
      */
     public static void removeDuplicates(ArrayList<Integer> intList) {
-        
+        for (int i = 0; i < intList.size(); i++) {
+            for (int j = i + 1; j < intList.size(); j++) {
+                if (intList.get(i) == intList.get(j)) {
+                    intList.remove(j);
+                    j--;
+                }
+            }
+        }
+    }
+
+    /** Moves all words in wordList that begin with "b" to the front of
+     *  wordList; all "b" words that are moved should appear in the same order
+     *  in the modified arrayList as they did before being moved
+     *
+     *  For example, this method will take a wordList:
+     *  ["apple", "banana", "cherry", "donut", "bagel", "danish", "berry", "baguette", "soda"]
+     *  and modify it to
+     *  ["banana", "bagel", "berry", "baguette", "apple", "cherry", "donut", "danish", "soda"]
+     *
+     *  DOES mutate (modify) elements in wordList
+     *  PRECONDITIONS: - wordList.size() > 0
+     *                 - all strings in wordList have length >= 1
+     *
+     *  @param wordList  arraylist of words
+     */
+    public static void moveBWords(ArrayList<String> wordList) {
+        int nextIdx = 0;
+        for (int i = 0; i < wordList.size(); i++) {
+            if (wordList.get(i).substring(0, 1).equals("b")) {
+                String removed = wordList.remove(i);
+                wordList.add(nextIdx, removed);
+                nextIdx++;
+            }
+        }
+    }
+
+    /** Returns an arraylist of Integers that contain all mode(s) of the array numList.
+     *  The mode of a list is the value that appears the greatest number of times.
+     *  A list can have one mode, multiple mode, or no mode.
+     *
+     *  If all elements in the list appear the exact same number of times, there is no
+     *  mode and this method should return an empty arraylist.
+     *
+     *  For example, if numList is: [1, 2, 6, 2, 3, 4, 6, 5, 5, 6, 7],
+     *  then numList contains one mode: 6
+     *  and this method returns an arrayList containing 6
+     *
+     *  If numList is: [1, 2, 3, 2, 4, 5, 5, 6],
+     *  then numList contains two modes: 2, 5
+     *  and this method returns an arraylist containing 2 and 5 (in any order)
+     *
+     *  If numList is: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6],
+     *  then numList contains no mode because all values appear the same number of times
+     *  and this method returns an empty arrayList: []
+     *
+     *  Does NOT mutate (modify) elements in numList
+     *  PRECONDITIONS: numList.length > 0
+     *
+     *  @param numList  numList of ints
+     */
+    public static ArrayList<Integer> modes(int[] numList) {
+
     }
 }
